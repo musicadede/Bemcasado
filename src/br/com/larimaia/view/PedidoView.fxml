@@ -5,8 +5,9 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import br.com.larimaia.controller.*?>
 
-<AnchorPane  fx:controller="bemcasado.FXMLDocumentController" xmlns:fx="http://javafx.com/fxml" id="AnchorPane" prefHeight="700" prefWidth="700" >
+<AnchorPane  fx:controller="PedidoController" xmlns:fx="http://javafx.com/fxml" id="AnchorPane" prefHeight="700" prefWidth="700" >
     <children>
         <Label text="Pedido" layoutX="350" layoutY="0"    />
         

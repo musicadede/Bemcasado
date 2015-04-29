@@ -12,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class ClienteController implements Initializable {
+public class PedidoController implements Initializable {
     
     @FXML
     private Label label;
