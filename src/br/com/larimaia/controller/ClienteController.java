@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bemcasado;
+package br.com.larimaia.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,11 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-/**
- *
- * @author Andre
- */
-public class FXMLDocumentController implements Initializable {
+public class ClienteController implements Initializable {
     
     @FXML
     private Label label;
@@ -29,7 +25,7 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
 }
