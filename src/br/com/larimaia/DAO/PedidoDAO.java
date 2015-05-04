@@ -57,7 +57,7 @@ public class PedidoDAO {
                 ped.setEnderecoEvento(resultadoPedido.getString("enderecoString"));
                 ped.setObs(resultadoPedido.getString("obs"));
                 ped.setItens((List<ItemPedido>) resultadoPedido.getObject("itens"));
-                ped.setCliente(resultadoPedido.get)
+               
                 preparadorPedidoSQL.close();
                 return ped;
 
