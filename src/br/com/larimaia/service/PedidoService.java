@@ -54,19 +54,21 @@ public class PedidoService {
             throw new ServiceException("Campo Tipo é obrigatório!");
         }
 
-       //pedidoDAO.salvar(pedido);
+       pedidoDAO.salvar(pedido);
 
     }
 
-   // public void excluir(Integer id) {
-        //pedidoDAO.excluir(id);
-    //}
+    public void excluir(Integer id) {
+       pedidoDAO.excluir(id);
+    }
 
-    //public Pedido buscarPorId(Integer id) {
-       // return pedidoDAO.buscarPorId();
-    //}
-
-    //public List<Pedido> buscarTodos() {
-      //      return pedidoDAO.buscarTodos();
-    //}
+    public Pedido buscarPorId(Integer id) {
+        return pedidoDAO.buscarPorId(id);
+    
+    }
+    public List<Pedido> buscarTodos() {
+          return (List<Pedido>) pedidoDAO.buscarTodosPedidos();
+    }
+    
+    
 }

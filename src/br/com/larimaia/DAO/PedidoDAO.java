@@ -4,7 +4,7 @@ import br.com.larimaia.model.Cliente;
 import br.com.larimaia.model.ItemPedido;
 import br.com.larimaia.model.Pedido;
 import br.com.larimaia.model.TipoEvento;
-import br.com.larimaia.util.PedidoUtil;
+import br.com.larimaia.util.ConexaoUtil;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -21,7 +21,7 @@ public class PedidoDAO {
 
     // Criando construtor da classe, para que seja iniciado uma conexão sempre que inicializado.
     public PedidoDAO() {
-        conexao = PedidoUtil.getConnection();
+        conexao = ConexaoUtil.getConnection();
     }
 
     // Criando metodo para buscar o pedido pelo id
@@ -100,23 +100,23 @@ public class PedidoDAO {
     private void cadastrar(Pedido pedido) {
 
         String sql;
-        sql = "INSERT INTO Pedido(id,origemPedido,dataPedido,cliente,cerimonial,dataEvento,tipoEvento,horaEvento,indicacao,localEvento,enderecoEventoobs,itens"
-                + "VALUES(default,?,?,?,?,?,?,?,?,?,?,?,?)";
+        sql = "INSERT INTO Pedido(origemPedido,dataPedido,cliente,cerimonial,dataEvento,tipoEvento,horaEvento,indicacao,localEvento,enderecoEventoobs,itens"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
 
             preparadorSQL.setString(2, pedido.getOrigemPedido());
             preparadorSQL.setDate(3, (Date) pedido.getDataPedido());
-            //preparadorSQL.CLIENTE
+            preparadorSQL.setInt(4,pedido.getCliente().getId());
             preparadorSQL.setString(5, pedido.getCerimonial());
             preparadorSQL.setDate(6, (Date) pedido.getDataEvento());
-            //preparadorSQL.TipoEvento
+            preparadorSQL.setInt(7, pedido.getId());
             preparadorSQL.setString(8, pedido.getHoraEvento());
             preparadorSQL.setString(9, pedido.getIndicacao());
             preparadorSQL.setString(10, pedido.getLocalEvento());
             preparadorSQL.setString(11, pedido.getEnderecoEvento());
-            //preparadorSQL.Eventos
+            preparadorSQL.setInt(12, pedido.getId());
 
         } catch (SQLException ex) {
             Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -151,7 +151,7 @@ public class PedidoDAO {
         }
     }
 
-    private void excluir(int id) {
+    public void excluir(int id) {
 
         String sql = "DELETE FROM Pedido WHERE id=?";
         try {

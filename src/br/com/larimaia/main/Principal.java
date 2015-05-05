@@ -1,5 +1,6 @@
 package br.com.larimaia.main;
 
+import br.com.larimaia.util.ConexaoUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

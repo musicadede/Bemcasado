@@ -17,7 +17,7 @@
         <DatePicker fx:id="dataPedido" prefWidth="180" prefHeight="5"   layoutX="100" layoutY="75" />
         
         <Label text="Cliente:" layoutX="10" layoutY="120"/>
-        <ComboBox fx:id="comboBoxClientes" prefWidth="180" prefHeight="5"  layoutX="100" layoutY="115"/>
+        <ComboBox fx:id="comboBoxClientes"   prefWidth="180" prefHeight="5"  layoutX="100" layoutY="115"/>
         
         <Label text="Cerimonial:" layoutX="10" layoutY="160"/>
         <TextField fx:id="cerimonial" prefWidth="180"  prefHeight="5" layoutX="100" layoutY="155"/>

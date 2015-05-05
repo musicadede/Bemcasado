@@ -9,11 +9,12 @@ import java.util.logging.Logger;
 public class ConexaoUtil {
 
     public static Connection getConnection() {
-        String url = "jdbc:postgresql://localhost:5432/clientesdb";
+        String url = "jdbc:postgresql://localhost:5432/LariMaia";
         String usuario = "postgres";
         String senha = "postgres";
         try {
             Connection connection = DriverManager.getConnection(url,usuario, senha);
+            System.out.println("Conectado com Sucesso !!");
             return  connection;
         } catch (SQLException ex) {
             Logger.getLogger(ConexaoUtil.class.getName()).log(Level.SEVERE, null, ex);
