@@ -19,7 +19,7 @@ import javafx.scene.control.Label;
 
 public class PedidoController implements Initializable {
     @FXML 
-    private ComboBox<String> comboBoxClientes;
+    private ComboBox<Cliente> comboBoxClientes;
     
     @FXML
     private Label label;
@@ -48,9 +48,10 @@ public class PedidoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ClienteDAO cliDAO = new ClienteDAO();
-        List<String> clientes = cliDAO.buscarNomeCliente();
-         ObservableList<String> 
-                relacaoClientes = FXCollections.observableArrayList( clientes );
+        
+        ClienteController cliController = new ClienteController();
+         ObservableList<Cliente> 
+                relacaoClientes = FXCollections.observableArrayList( cliDAO.buscarCliente());
          comboBoxClientes.setItems(relacaoClientes);
        
         

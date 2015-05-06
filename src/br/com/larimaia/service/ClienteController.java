@@ -10,8 +10,14 @@ import java.util.List;
 public class ClienteController {
     
     public List<String> listarNome (){
-          ClienteDAO cli = new ClienteDAO();
-          return cli.buscarNomeCliente();
+          
+          
+          
+           return null;
+                   
+                   
         }
+
+    
     }    
 

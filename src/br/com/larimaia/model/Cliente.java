@@ -38,6 +38,7 @@ public class Cliente {
         this.email = email;
     }
     
+    // metodo toString vai determina as colunas que será exibida no combobox Cliente.
     @Override
     public String toString(){
         return this.getNome();
