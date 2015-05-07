@@ -37,7 +37,6 @@ public class ClienteDAO {
                 cliente.setNome(resultado.getString("nome"));
                 cliente.setEmail(resultado.getString("email"));
                 cliente.setTelefone(resultado.getString("telefone"));
-                //clientes.add(cliente.getNome().toString());
                 clientes.add(cliente);
             }
             

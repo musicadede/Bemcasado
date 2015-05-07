@@ -21,10 +21,10 @@ public class ProdutoDAO {
     }
     
     public List<Produto> buscaProduto(){
-        String sql = "SELECT * FROM Produto ORDER by descricao";
+        String sql = "SELECT * FROM produto ORDER by descricao";
         
         try {
-            PreparedStatement preparadorsql = conexao.prepareStatement("sql");
+            PreparedStatement preparadorsql = conexao.prepareStatement(sql);
             ResultSet resultado = preparadorsql.executeQuery();
             List<Produto> produtos = new ArrayList<>();
             
@@ -78,9 +78,6 @@ public class ProdutoDAO {
             alterar(produto);
         }
             
-        
-        
-        
     }
 
     private void cadastrar(Produto produto) {
@@ -104,7 +101,7 @@ public class ProdutoDAO {
 
     private void alterar(Produto produto) {
         
-        String sql = "UPTADE Produto SET ,descricao=?,valor=? ";
+        String sql = "UPTADE Produto SET descricao=?,valor=? ";
         
         try {
             PreparedStatement preparadorsql = conexao.prepareStatement(sql);
@@ -135,9 +132,6 @@ public class ProdutoDAO {
         }
         
     }
-    
-    
-   
     
     
 }

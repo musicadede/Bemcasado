@@ -20,7 +20,6 @@ public class TipoEventoDAO {
         conexao= ConexaoUtil.getConnection();
     }
     
-    
     public List<TipoEvento> buscarTodosOsTiposDeEventos(){
         String sql ="SELECT * FROM tipoevento order by descricao";
         try {
@@ -33,7 +32,6 @@ public class TipoEventoDAO {
                 tp.setId(resultado.getInt("idtipoevento"));
                 tp.setDescricao(resultado.getString("descricao"));
                 listaTP.add(tp);
-                
             }
             preparadorsql.close();
             return listaTP;
@@ -44,6 +42,7 @@ public class TipoEventoDAO {
         return null;
         
     }
+    
     public TipoEvento buscarTipoDeEventoPorId(int id){
         String sql ="SELECT * FROM tipoevento WHERE id=?";
         try {
@@ -64,5 +63,36 @@ public class TipoEventoDAO {
         
     }
     
+    public void salvar (TipoEvento tp){
+        if(tp.getId() == null){
+            Cadastrar(tp);
+        }else{
+            alterar(tp);
+        }
+        
+    }
+    
+    private void Cadastrar(TipoEvento tp) {
+        String sql = "INSERT INTO TipoEvento(idTipoEvento,descricao) VALUES(?,?)";
+        TipoEvento tipoevento = new TipoEvento();
+        try {
+            PreparedStatement preparadorsql= conexao.prepareStatement(sql);
+            preparadorsql.setString(1, "default");
+            preparadorsql.setString(2, tp.getDescricao());
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(TipoEventoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void alterar(TipoEvento tp) {
+       String sql = "UPDATE TipoEvento SET descricao=?"; 
+        try {
+            PreparedStatement preparadorsql= conexao.prepareStatement(sql);
+            preparadorsql.setString(1, tp.getDescricao());
+        } catch (SQLException ex) {
+            Logger.getLogger(TipoEventoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
