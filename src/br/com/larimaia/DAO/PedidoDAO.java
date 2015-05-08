@@ -74,13 +74,11 @@ public class PedidoDAO {
 
     public List<Pedido> buscarTodosPedidos() {
         // Criando String com comando sql para selecionar todos os pedidos
-
         String sql = "SELECT * FROM Pedido ORDER BY id";
 
         try {
             // Criando preparadorPedidoSQL para inicia e finalizar sessão com banco
             PreparedStatement preparadorPedidoSQL;
-
             preparadorPedidoSQL = conexao.prepareStatement(sql);
 
             // Colocando resultado do SQL na variavel resultadoPedido
@@ -114,7 +112,8 @@ public class PedidoDAO {
 
         return null;
     }
-
+    
+    // Criacao do metodo salvar, que decide se o usuario ira cadastrar ou alterar pedido
     public void salvar(Pedido pedido) {
         if (pedido.getId() == null) {
             cadastrar(pedido);
@@ -122,29 +121,30 @@ public class PedidoDAO {
             alterar(pedido);
         }
     }
-
+    
+    //Metodo cadastrar pedido
     private void cadastrar(Pedido pedido) {
         // falta cadastrar a lista de itens de produto
         String sql;
-        sql = "INSERT INTO Pedido(origemPedido,dataPedido,idcliente,"
+        sql = "INSERT INTO Pedido(idpedido,origemPedido,dataPedido,idcliente,"
                 + "cerimonial,dataEvento,idtipoEvento,horaEvento,"
                 + "indicacao,localEvento,enderecoEvento,obs"
-                + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
-
-            preparadorSQL.setString(1, pedido.getOrigemPedido());
-            preparadorSQL.setDate(2, (Date) pedido.getDataPedido());
-            preparadorSQL.setInt(3,pedido.getCliente().getId());
-            preparadorSQL.setString(4, pedido.getCerimonial());
-            preparadorSQL.setDate(5, (Date) pedido.getDataEvento());
-            preparadorSQL.setInt(6, pedido.getTipoEvento().getId());
-            preparadorSQL.setString(7, pedido.getHoraEvento());
-            preparadorSQL.setString(8, pedido.getIndicacao());
-            preparadorSQL.setString(9, pedido.getLocalEvento());
-            preparadorSQL.setString(10, pedido.getEnderecoEvento());
-            preparadorSQL.setString(11, pedido.getObs());
+            preparadorSQL.setString(1, "default");
+            preparadorSQL.setString(2, pedido.getOrigemPedido());
+            preparadorSQL.setDate(3, (Date) pedido.getDataPedido());
+            preparadorSQL.setInt(4,pedido.getCliente().getId());
+            preparadorSQL.setString(5, pedido.getCerimonial());
+            preparadorSQL.setDate(6, (Date) pedido.getDataEvento());
+            preparadorSQL.setInt(7, pedido.getTipoEvento().getId());
+            preparadorSQL.setString(8, pedido.getHoraEvento());
+            preparadorSQL.setString(9, pedido.getIndicacao());
+            preparadorSQL.setString(10, pedido.getLocalEvento());
+            preparadorSQL.setString(11, pedido.getEnderecoEvento());
+            preparadorSQL.setString(12, pedido.getObs());
             
             preparadorSQL.execute();
             preparadorSQL.close();
@@ -154,7 +154,8 @@ public class PedidoDAO {
         }
 
     }
-
+    
+    //metodo alterar pedido
     private void alterar(Pedido pedido) {
         // falta alterar a lista de itens de produto
         String sql = "UPDATE Pedido SET origempedido=?,datapedido=?,idcliente=?,"
@@ -184,7 +185,8 @@ public class PedidoDAO {
             Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    //metodo excluir um pedido atraves de seu id
     public void excluir(int id) {
 
         String sql = "DELETE FROM Pedido WHERE id=?";

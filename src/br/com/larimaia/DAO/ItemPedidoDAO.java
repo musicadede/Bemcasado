@@ -16,7 +16,6 @@ public class ItemPedidoDAO {
     }
     
     public List<ItemPedido> listarItens(){
-        
         String sql = "SELECT * FROM ";
         return null;
     }

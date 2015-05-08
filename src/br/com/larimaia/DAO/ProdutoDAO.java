@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProdutoDAO {
-  
+    
     Connection conexao;
     
     public ProdutoDAO(){
@@ -41,7 +41,6 @@ public class ProdutoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return null;
     }
     
@@ -49,7 +48,7 @@ public class ProdutoDAO {
         String sql = "SELECT * FROM Produto WHERE idproduto=?";
         
         try {
-            PreparedStatement preparadorsql = conexao.prepareStatement("sql");
+            PreparedStatement preparadorsql = conexao.prepareStatement(sql);
             preparadorsql.setInt(1,id);
             ResultSet resultado = preparadorsql.executeQuery();
             Produto prod = new Produto();
@@ -62,11 +61,9 @@ public class ProdutoDAO {
             }
             preparadorsql.close();
             return prod;
-            
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return null;
     }
     
@@ -100,7 +97,6 @@ public class ProdutoDAO {
     }
 
     private void alterar(Produto produto) {
-        
         String sql = "UPTADE Produto SET descricao=?,valor=? ";
         
         try {
@@ -114,11 +110,9 @@ public class ProdutoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     public void excluir (int id){
-        
         String sql = "DELETE  FROM Produto WHERE idproduto=?";
         
         try {
@@ -130,8 +124,6 @@ public class ProdutoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
-    
     
 }

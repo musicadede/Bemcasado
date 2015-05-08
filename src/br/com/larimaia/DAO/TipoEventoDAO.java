@@ -95,4 +95,20 @@ public class TipoEventoDAO {
         }
     }
     
+    public void excluir (int id){
+        
+        String sql = "DELETE  FROM tipoevento WHERE idtipoevento=?";
+        
+        try {
+            PreparedStatement preparadorsql = conexao.prepareStatement(sql);
+            preparadorsql.setInt(1, id);
+            preparadorsql.execute();
+            preparadorsql.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
 }

@@ -7,10 +7,11 @@ import br.com.larimaia.DAO.PedidoDAO;
 import br.com.larimaia.DAO.ProdutoDAO;
 import br.com.larimaia.DAO.TipoEventoDAO;
 import br.com.larimaia.model.Cliente;
+import br.com.larimaia.model.Pedido;
 import br.com.larimaia.model.Produto;
 import br.com.larimaia.model.TipoEvento;
-import br.com.larimaia.service.ClienteController;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+
 
 public class PedidoController implements Initializable {
     @FXML 
@@ -31,15 +33,17 @@ public class PedidoController implements Initializable {
     @FXML 
     private ComboBox<TipoEvento> comboBoxTipo;
     
+        
     @FXML
     private Label label;
     
     
     @FXML  
     private void salvar (ActionEvent e){
-        PedidoDAO buscar = new PedidoDAO();
-        buscar.buscarPorId(1);
-        
+        Pedido ped = new Pedido();
+        PedidoDAO pc = new PedidoDAO();
+        ped.setCliente(comboBoxClientes.getValue());
+        pc.salvar(ped);
     }
     
     @FXML  
@@ -66,7 +70,7 @@ public class PedidoController implements Initializable {
         ObservableList<Produto> 
                 relacaoProduto = FXCollections.observableArrayList( pdao.buscaProduto());
          comboBoxProduto.setItems(relacaoProduto);
-         
+                 
          TipoEventoDAO tipodao = new TipoEventoDAO();
         ObservableList<TipoEvento> 
                 relacaoTipoevento = FXCollections.observableArrayList( tipodao.buscarTodosOsTiposDeEventos());
@@ -74,12 +78,5 @@ public class PedidoController implements Initializable {
          
        
     }  
-    
-    @FXML
-    public void buscarNomeClientes(){
-        
-        
-    }
-    
     
 }

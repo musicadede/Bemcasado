@@ -10,6 +10,7 @@ import br.com.larimaia.model.TipoEvento;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -22,6 +23,9 @@ public class TipoController  {
     
     @FXML
     private Label label;
+    
+    @FXML
+    private TextField valorProduto;
     
     
     
