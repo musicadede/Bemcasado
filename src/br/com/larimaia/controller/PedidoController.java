@@ -2,28 +2,38 @@
 package br.com.larimaia.controller;
 
 
-import br.com.larimaia.DAO.ClienteDAO;
 import br.com.larimaia.DAO.PedidoDAO;
-import br.com.larimaia.DAO.ProdutoDAO;
-import br.com.larimaia.DAO.TipoEventoDAO;
 import br.com.larimaia.model.Cliente;
+import br.com.larimaia.model.Pedido;
 import br.com.larimaia.model.Produto;
 import br.com.larimaia.model.TipoEvento;
-import br.com.larimaia.service.ClienteController;
+import br.com.larimaia.service.PedidoService;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 public class PedidoController implements Initializable {
+    PedidoService pedidoService;
+    Pedido pedido;
+    
+    @FXML
+    private TextField localContrato;
+    
+    @FXML
+    private DatePicker dataPedido;
+    
     @FXML 
     private ComboBox<Cliente> comboBoxClientes;
+
+    @FXML
+    private TextField cerimonial;
+    
     
     @FXML 
     private ComboBox<Produto> comboBoxProduto;
@@ -31,14 +41,35 @@ public class PedidoController implements Initializable {
     @FXML 
     private ComboBox<TipoEvento> comboBoxTipo;
     
+    
     @FXML
-    private Label label;
+    private TextField hora;
+    
+    @FXML
+    private TextField qtdproduto;
+    
+    @FXML
+    private TextField valorProduto;
+    
+    @FXML
+    private Button salvar;
+    
+    @FXML
+    private Button adicionar;
     
     
     @FXML  
     private void salvar (ActionEvent e){
-        PedidoDAO buscar = new PedidoDAO();
-        buscar.buscarPorId(1);
+//        PedidoDAO buscar = new PedidoDAO();
+//        buscar.buscarPorId(1);
+//       pedido.set
+            
+        try {
+            pedidoService.salvar(null);
+        } catch (Exception ex) {
+        
+        }
+        
         
     }
     
@@ -57,29 +88,18 @@ public class PedidoController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ClienteDAO cliDAO = new ClienteDAO();
-         ObservableList<Cliente> 
-                relacaoClientes = FXCollections.observableArrayList( cliDAO.buscarCliente());
-         comboBoxClientes.setItems(relacaoClientes);
-         
-        ProdutoDAO pdao = new ProdutoDAO();
-        ObservableList<Produto> 
-                relacaoProduto = FXCollections.observableArrayList( pdao.buscaProduto());
-         comboBoxProduto.setItems(relacaoProduto);
-         
-         TipoEventoDAO tipodao = new TipoEventoDAO();
-        ObservableList<TipoEvento> 
-                relacaoTipoevento = FXCollections.observableArrayList( tipodao.buscarTodosOsTiposDeEventos());
-         comboBoxTipo.setItems(relacaoTipoevento);
-         
-       
+
+         comboBoxClientes.setItems(PedidoService.buscarClientes());
+         comboBoxProduto.setItems(PedidoService.buscarProdutos());
+         comboBoxTipo.setItems(PedidoService.buscarTipoEventos());
     }  
     
     @FXML
-    public void buscarNomeClientes(){
+    public void adicionarNaTabela(ActionEvent e){
         
         
     }
+    
     
     
 }

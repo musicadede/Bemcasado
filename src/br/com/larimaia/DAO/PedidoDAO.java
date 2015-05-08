@@ -134,7 +134,7 @@ public class PedidoDAO {
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
 
-            preparadorSQL.setString(1, pedido.getOrigemPedido());
+            preparadorSQL.setString(1, pedido.getLocalContrato());
             preparadorSQL.setDate(2, (Date) pedido.getDataPedido());
             preparadorSQL.setInt(3,pedido.getCliente().getId());
             preparadorSQL.setString(4, pedido.getCerimonial());
@@ -164,7 +164,7 @@ public class PedidoDAO {
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
 
-            preparadorSQL.setString(1, pedido.getOrigemPedido());
+            preparadorSQL.setString(1, pedido.getLocalContrato());
             preparadorSQL.setDate(2, (Date) pedido.getDataPedido());
             preparadorSQL.setInt(3,pedido.getCliente().getId());
             preparadorSQL.setString(4, pedido.getCerimonial());

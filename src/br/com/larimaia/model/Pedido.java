@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Pedido {
     private Integer id;
-    private String origemPedido;
+    private String localContrato;
     private Date dataPedido;
     private Cliente cliente;
     private String cerimonial;
@@ -26,12 +26,12 @@ public class Pedido {
         this.id = id;
     }
 
-    public String getOrigemPedido() {
-        return origemPedido;
+    public String getLocalContrato() {
+        return localContrato;
     }
 
-    public void setOrigemPedido(String origemPedido) {
-        this.origemPedido = origemPedido;
+    public void setOrigemPedido(String localContrato) {
+        this.localContrato = localContrato;
     }
 
     public Date getDataPedido() {

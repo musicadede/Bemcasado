@@ -1,9 +1,18 @@
 package br.com.larimaia.service;
 
+import br.com.larimaia.DAO.ClienteDAO;
 import br.com.larimaia.DAO.PedidoDAO;
+import br.com.larimaia.DAO.ProdutoDAO;
+import br.com.larimaia.DAO.TipoEventoDAO;
 import br.com.larimaia.model.Pedido;
 import br.com.larimaia.exception.ServiceException;
+import br.com.larimaia.model.Cliente;
+import br.com.larimaia.model.Produto;
+import br.com.larimaia.model.TipoEvento;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 
 public class PedidoService {
     private PedidoDAO pedidoDAO;
@@ -14,7 +23,7 @@ public class PedidoService {
 
     public void salvar(Pedido pedido) throws ServiceException {
 
-        if (pedido.getOrigemPedido().isEmpty()) {
+        if (pedido.getLocalContrato().isEmpty()) {
             throw new ServiceException("Campo Local do Contrato é obrigatório!");
         }
 
@@ -70,5 +79,28 @@ public class PedidoService {
           return (List<Pedido>) pedidoDAO.buscarTodosPedidos();
     }
     
+    
+    public static ObservableList<Cliente> buscarClientes(){
+        ClienteDAO cliDAO = new ClienteDAO();
+         ObservableList<Cliente> 
+                relacaoClientes = FXCollections.observableArrayList( cliDAO.buscarCliente());
+        return relacaoClientes;
+    }
+    
+    public static ObservableList<Produto> buscarProdutos(){
+        ProdutoDAO pdao = new ProdutoDAO();
+        ObservableList<Produto> 
+                relacaoProduto = FXCollections.observableArrayList( pdao.buscaProduto());
+        return relacaoProduto;
+    }
+    
+    public static ObservableList<TipoEvento>  buscarTipoEventos(){
+        TipoEventoDAO tipodao = new TipoEventoDAO();
+        ObservableList<TipoEvento> 
+                relacaoTipoevento = FXCollections.observableArrayList( tipodao.buscarTodosOsTiposDeEventos());
+
+        return relacaoTipoevento;
+    }
+
     
 }

@@ -39,7 +39,7 @@
         <Label text="Valor:" layoutX="280" layoutY="280"/>
         <TextField fx:id="valorProduto" prefWidth="80" prefHeight="5"  layoutX="280" layoutY="300"/>
         
-        <Button text="Adicionar"  fx:id="adicionar" layoutX="400" layoutY="300" />
+        <Button text="Adicionar" onAction="#adicionarNaTabela"  fx:id="adicionar" layoutX="400" layoutY="300" />
                 
         <TableView layoutX="50" layoutY="350" prefHeight="180" > 
             <columns>
