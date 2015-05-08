@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="850.0" styleClass="principal" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@principalview.css" />
+    </stylesheets>
+   <children>
+      <Label fx:id="larimaia" layoutX="258.0" layoutY="168.0" text="LARI MAIA" />
+      <Label fx:id="bemcasados" layoutX="313.0" layoutY="249.0" text="BEM CASADOS" />
+      <Label layoutX="301.0" layoutY="369.0" text="Login" />
+   </children>
+</AnchorPane>

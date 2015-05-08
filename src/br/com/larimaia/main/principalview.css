@@ -1,0 +1,13 @@
+.principal{
+    -fx-background-image: url(larimaia.jpg);
+}
+#larimaia{
+    -fx-font: 70px "Century Gothic";
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+#bemcasados{
+    -fx-font: 35px "Century Gothic";
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
